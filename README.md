@@ -2,6 +2,7 @@
 
 *FunSQL-TestDATA is a set of disparately licensed data sets used for testing FunSQL.*
 
+[mimic-iv-full]: https://physionet.org/content/mimiciv/
 [mimic-iv-demo]: https://physionet.org/content/mimic-iv-demo/
 [odbl-1.0]: https://physionet.org/content/mimic-iv-demo/view-license/2.2/
 [physionet]: https://physionet.org/content/?topic=MIMIC+IV
@@ -26,7 +27,7 @@ from Boston's Beth Israel Deaconess Medical Center electronic health
 records, released though [PhysioNet][physionet] collaborative repository
 under the copyleft [Open Data Commons Open Database License v1.0][odbl-1.0].
 
-The full MIMIC IV dataset is available upon completing [CITI Program][citi]
-"Massachusetts Institute of Technology Affilates" training and executing the
-PhysioNet [Credentialed Health Data License][pchdl]. PhysioNet credentialing
-is available to independent researchers.
+The [full MIMIC IV][mimic-iv-full] dataset is available upon completing
+[CITI Program][citi] "Massachusetts Institute of Technology Affilates" training
+and executing the PhysioNet [Credentialed Health Data License][pchdl].
+PhysioNet credentialing is available to independent researchers.
