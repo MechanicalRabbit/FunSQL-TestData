@@ -11,7 +11,7 @@ const BUILDDIR = joinpath(tempdir(), "mimic-iv-build")
 function download_demo()
     mkpath(BUILDDIR)
     @info "Using directory: $BUILDDIR"
-    zip_path = joinpath(BUILDDIR, "mimic-iv-demo.zip")
+    zip_path = joinpath(BUILDDIR, "mimic-iv-demo-2.2.zip")
     if !isfile(zip_path)
         @info "Downloading ZIP file..."
         Downloads.download(DEMOZIP, zip_path)

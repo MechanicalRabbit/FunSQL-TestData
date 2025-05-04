@@ -31,3 +31,29 @@ The [full MIMIC IV][mimic-iv-full] dataset is available upon completing
 [CITI Program][citi] "Massachusetts Institute of Technology Affilates" training
 and executing the PhysioNet [Credentialed Health Data License][pchdl].
 PhysioNet credentialing is available to independent researchers.
+
+To use the 100 person demo in Julia, you'll first need this in your
+`Artifacts.toml`.
+
+```toml
+[mimic-iv-demo]
+git-tree-sha1 = "e9227b6756a382f42ab91cfb5ea8fda781c7b95e"
+
+    [[mimic-iv-demo.download]]
+    url = "https://github.com/MechanicalRabbit/FunSQL-TestData/releases/download/20250504/mimic-iv-demo-2.2.duckdb.tgz"
+    sha256 = "e534b45b0d5c48dbe17594b8b74f72a4f5f04cb65c1b283c19247f2792e98c94"
+```
+
+The following Julia program shuld then work.
+
+```julia
+using Pkg, Pkg.Artifacts
+Pkg.instantiate() # download Artifacts.toml
+
+using DuckDB
+readonly_config = DuckDB.Config()
+DuckDB.set_config(readonly_config, "access_mode", "READ_ONLY")
+mimic_dbfile = joinpath(artifact"mimic-iv-demo", "mimic-iv-demo-2.2.duckdb")
+mimic_conn = DuckDB.DB(mimic_dbfile, readonly_config)
+DuckDB.execute(mimic_conn, "SELECT count(*) FROM patients")
+```
