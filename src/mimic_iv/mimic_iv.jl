@@ -73,6 +73,8 @@ function import_to_duckdb(zip_path::String)
     finally
         close(r)
     end
+    @info "Applying constraints"
+    execute_file(con, "create_constraints.sql")
     @info "Import complete. Database saved at: $db_path"
     return con
 end
