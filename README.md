@@ -51,9 +51,8 @@ using Pkg, Pkg.Artifacts
 Pkg.instantiate() # download Artifacts.toml
 
 using DuckDB
-readonly_config = DuckDB.Config()
-DuckDB.set_config(readonly_config, "access_mode", "READ_ONLY")
+conn = DuckDB.DB()
 mimic_dbfile = joinpath(artifact"mimic-iv-demo", "mimic-iv-demo-2.2.duckdb")
-mimic_conn = DuckDB.DB(mimic_dbfile, readonly_config)
-DuckDB.execute(mimic_conn, "SELECT count(*) FROM patients")
+DuckDB.execute(conn, "ATTACH '$(mimic_dbfile)' AS mimic (READ_ONLY);")
+DuckDB.execute(conn, "SELECT count(*) FROM mimic.patients")
 ```
